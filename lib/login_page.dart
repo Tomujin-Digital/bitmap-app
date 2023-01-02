@@ -38,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void submitHandler() {
     // next time use credential
+    if (credential.isEmpty) return;
     Navigator.push(
       context,
       MaterialPageRoute(

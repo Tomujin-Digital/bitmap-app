@@ -1,6 +1,7 @@
 import 'package:bitmap/constants.dart';
 import 'package:bitmap/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'Bitmap',
       theme: ThemeData(
           primarySwatch: Colors.blue, backgroundColor: kPrimaryBackgroundColor),
       home: const LoginPage(),
