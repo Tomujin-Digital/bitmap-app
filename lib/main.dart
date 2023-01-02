@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Bitmap',
       theme: ThemeData(
           primarySwatch: Colors.blue, backgroundColor: kPrimaryBackgroundColor),
-      home: const LoginPage(),
+      home: LoginPage(),
     );
   }
 }

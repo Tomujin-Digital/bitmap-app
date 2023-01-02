@@ -1,24 +1,14 @@
 import 'package:bitmap/constants.dart';
 import 'package:bitmap/fee_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
-class UserPage extends StatefulWidget {
-  UserPage({super.key, this.video});
-  VideoPlayerController? video;
+import 'controller/video.dart';
 
-  @override
-  State<UserPage> createState() => _UserPageState();
-}
-
-class _UserPageState extends State<UserPage> {
-  VideoPlayerController? _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = widget.video;
-  }
+class UserPage extends StatelessWidget {
+  UserPage({super.key});
+  final VideoPlayerController? video = Get.put(VideoController()).video;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +23,9 @@ class _UserPageState extends State<UserPage> {
             child: FittedBox(
               fit: BoxFit.fill,
               child: SizedBox(
-                width: _controller?.value.size.width ?? 0,
-                height: _controller?.value.size.height ?? 0,
-                child: VideoPlayer(_controller!),
+                width: video?.value.size.width ?? 0,
+                height: video?.value.size.height ?? 0,
+                child: VideoPlayer(video!),
               ),
             ),
           ),
