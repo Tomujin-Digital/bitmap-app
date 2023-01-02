@@ -1,9 +1,24 @@
 import 'package:bitmap/constants.dart';
 import 'package:bitmap/fee_page.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
-class UserPage extends StatelessWidget {
-  const UserPage({super.key});
+class UserPage extends StatefulWidget {
+  UserPage({super.key, this.video});
+  VideoPlayerController? video;
+
+  @override
+  State<UserPage> createState() => _UserPageState();
+}
+
+class _UserPageState extends State<UserPage> {
+  VideoPlayerController? _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = widget.video;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,14 +27,21 @@ class UserPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('0x2388891'),
           backgroundColor: kPrimaryColor,
-          elevation: 0,
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            color: kPrimaryColor,
+        body: Stack(children: [
+          SizedBox.expand(
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: SizedBox(
+                width: _controller?.value.size.width ?? 0,
+                height: _controller?.value.size.height ?? 0,
+                child: VideoPlayer(_controller!),
+              ),
+            ),
           ),
-          child: Center(
+          Center(
             child: Column(children: [
+              const SizedBox(height: 20),
               CircleAvatar(
                   maxRadius: 50.0,
                   minRadius: 50.0,
@@ -45,7 +67,7 @@ class UserPage extends StatelessWidget {
               )
             ]),
           ),
-        ),
+        ]),
       ),
     );
   }

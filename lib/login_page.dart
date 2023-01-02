@@ -40,7 +40,10 @@ class _LoginPageState extends State<LoginPage> {
     // next time use credential
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const UserPage()),
+      MaterialPageRoute(
+          builder: (context) => UserPage(
+                video: _controller,
+              )),
     );
   }
 
