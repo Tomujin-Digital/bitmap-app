@@ -1,46 +1,13 @@
+import 'package:bitmap/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
-const gridColor = Color(0xff68739f);
-const titleColor = Color(0xff8c95db);
-const fashionColor = Color(0xffe15665);
-const artColor = Color(0xff63e7e5);
-const boxingColor = Color(0xff83dea7);
-const entertainmentColor = Colors.white70;
-const offRoadColor = Color(0xFFFFF59D);
-
-class RawDataSet {
-  RawDataSet({
-    required this.title,
-    required this.color,
-    required this.values,
-  });
-  final String title;
-  final Color color;
-  final List<double> values;
-}
+import 'data/spider_default_data.dart';
 
 class SpiderChart extends StatelessWidget {
   const SpiderChart({super.key});
   final int selectedDataSetIndex = -1;
   final double angleValue = 0;
   final bool relativeAngleMode = true;
-
-  List<RawDataSet> rawDataSets() {
-    return [
-      RawDataSet(
-        title: 'Fashion',
-        color: fashionColor,
-        values: [
-          1,
-          2,
-          3,
-          4,
-          5,
-        ],
-      ),
-    ];
-  }
 
   List<RadarDataSet> showingDataSets() {
     return rawDataSets().asMap().entries.map((entry) {
@@ -106,10 +73,9 @@ class SpiderChart extends StatelessWidget {
               case 4:
                 return RadarChartTitle(text: 'System', angle: usedAngle);
               default:
-                return const RadarChartTitle(text: '');
+                return const RadarChartTitle(text: 'Unknown', angle: 0);
             }
           },
-          tickCount: 1,
           ticksTextStyle:
               const TextStyle(color: Colors.transparent, fontSize: 10),
           tickBorderData: const BorderSide(color: Colors.transparent),

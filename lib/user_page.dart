@@ -1,4 +1,4 @@
-import 'package:bitmap/components/spider_chart.dart';
+import 'package:bitmap/components/SpiderChart/spider_chart.dart';
 import 'package:bitmap/constants.dart';
 import 'package:bitmap/fee_page.dart';
 import 'package:flutter/material.dart';
