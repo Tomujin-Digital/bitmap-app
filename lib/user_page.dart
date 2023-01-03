@@ -1,3 +1,4 @@
+import 'package:bitmap/components/spider_chart.dart';
 import 'package:bitmap/constants.dart';
 import 'package:bitmap/fee_page.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +53,8 @@ class UserPage extends StatelessWidget {
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20)),
                   ),
-                  child: const FeePage(),
+                  // child: const FeePage(),
+                  child: const SpiderChart(),
                 ),
               )
             ]),
