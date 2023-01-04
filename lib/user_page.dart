@@ -22,162 +22,151 @@ class UserPage extends StatelessWidget {
     const collapsedHeight = 60.0;
     return SafeArea(
       child: Scaffold(
-        body: Stack(children: [
-          SizedBox.expand(
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: SizedBox(
-                width: video?.value.size.width ?? 0,
-                height: video?.value.size.height ?? 0,
-                // child: VideoPlayer(video!),
-              ),
-            ),
-          ),
-          CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.pending_actions),
-                    onPressed: () {
-                      Get.to(() => const FeePage());
-                    },
-                  ),
-                ],
-                expandedHeight: expandedHeight,
-                collapsedHeight: collapsedHeight,
-                floating: false,
-                pinned: true,
-                snap: false,
-                backgroundColor: kPrimaryColor,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  ),
+        backgroundColor: kPrimaryBackgroundColor,
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.pending_actions),
+                  onPressed: () {
+                    Get.to(() => const FeePage());
+                  },
                 ),
-                flexibleSpace: FlexibleSpaceBar(
-                  collapseMode: CollapseMode.pin,
-                  centerTitle: true,
-                  title: Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+              ],
+              expandedHeight: expandedHeight,
+              collapsedHeight: collapsedHeight,
+              floating: false,
+              pinned: true,
+              snap: false,
+              backgroundColor: kPrimaryColor,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+              ),
+              flexibleSpace: FlexibleSpaceBar(
+                collapseMode: CollapseMode.pin,
+                centerTitle: true,
+                title: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Chingun Undrakh',
+                            style:
+                                TextStyle(fontSize: 16, color: Colors.white)),
+                        const SizedBox(width: 5),
+                        Container(
+                          padding: const EdgeInsets.all(1),
+                          decoration: const ShapeDecoration(
+                            color: Colors.white,
+                            shape: CircleBorder(),
+                          ),
+                          child: const BadgeTooltip(
+                            message: "Diamond",
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/icons/diamond.png'),
+                              radius: 10,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                background: Stack(
+                  children: [
+                    SizedBox.expand(
+                      child: Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30),
+                          ),
+                          gradient: kPrimaryBackgroundLinear,
+                        ),
+                        child: FittedBox(
+                          fit: BoxFit.fill,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            height: video?.value.size.height ?? 0,
+                            child: VideoPlayer(video!),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 100,
+                          child: const LineChartSample2()),
+                    ),
+                    Positioned(
+                      bottom: 30,
+                      left: MediaQuery.of(context).size.width / 2 - 35,
+                      child: Column(
                         children: [
-                          const Text('Chingun Undrakh',
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white)),
-                          const SizedBox(width: 5),
                           Container(
-                            padding: const EdgeInsets.all(1),
+                            padding: const EdgeInsets.all(5),
                             decoration: const ShapeDecoration(
                               color: Colors.white,
                               shape: CircleBorder(),
                             ),
-                            child: const BadgeTooltip(
-                              message: "Diamond",
-                              child: CircleAvatar(
-                                backgroundImage: AssetImage(
-                                    'assets/images/icons/diamond.png'),
-                                radius: 10,
-                              ),
+                            child: const CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  'https://avatars.dicebear.com/api/bottts/0x2388891.png'),
+                              radius: 30,
                             ),
+                          ),
+                          const SizedBox(height: 10),
+                          const Text(
+                            '0x2388891',
+                            style: TextStyle(color: Colors.white),
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  background: Stack(
-                    children: [
-                      SizedBox.expand(
-                        child: Container(
-                          clipBehavior: Clip.hardEdge,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(30),
-                              bottomRight: Radius.circular(30),
-                            ),
-                            gradient: kPrimaryBackgroundLinear,
-                          ),
-                          child: FittedBox(
-                            fit: BoxFit.fill,
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              height: video?.value.size.height ?? 0,
-                              child: VideoPlayer(video!),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: 100,
-                            child: const LineChartSample2()),
-                      ),
-                      Positioned(
-                        bottom: 30,
-                        left: MediaQuery.of(context).size.width / 2 - 35,
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: const ShapeDecoration(
-                                color: Colors.white,
-                                shape: CircleBorder(),
-                              ),
-                              child: const CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    'https://avatars.dicebear.com/api/bottts/0x2388891.png'),
-                                radius: 30,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            const Text(
-                              '0x2388891',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              SliverToBoxAdapter(
-                child: Center(
-                  child: Column(children: const [
-                    SizedBox(
-                      width: double.infinity,
-                      height: 300,
-                      child: SpiderChart(),
-                    ),
-                    ContentCard(
-                      title: "Teachers Told Me",
-                      subtitle: "Latest say: Cheer up!",
-                    ),
-                    ContentCard(
-                      title: "My Activity",
-                      subtitle: "You have 3 strike",
-                    ),
-                    ContentCard(
-                      title: "Challenges",
-                      subtitle: "test",
-                    ),
-                    ContentCard(
-                      title: "My Rewards",
-                      subtitle: "test",
-                    ),
-                    TestCard()
-                    // LineChartSample2()
-                  ]),
-                ),
-              )
-            ],
-          ),
-        ]),
+            ),
+            SliverToBoxAdapter(
+              child: Center(
+                child: Column(children: const [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 300,
+                    child: SpiderChart(),
+                  ),
+                  ContentCard(
+                    title: "Teachers Told Me",
+                    subtitle: "Latest say: Cheer up!",
+                  ),
+                  ContentCard(
+                    title: "My Activity",
+                    subtitle: "You have 3 strike",
+                  ),
+                  ContentCard(
+                    title: "Challenges",
+                    subtitle: "test",
+                  ),
+                  ContentCard(
+                    title: "My Rewards",
+                    subtitle: "test",
+                  ),
+                  TestCard()
+                  // LineChartSample2()
+                ]),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

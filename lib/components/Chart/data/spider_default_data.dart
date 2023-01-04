@@ -17,7 +17,7 @@ List<RawDataSet> rawDataSets() {
   return [
     RawDataSet(
       title: 'Default',
-      color: gridColor,
+      color: kPrimaryColor.withOpacity(0.5),
       values: [
         5,
         5,
@@ -28,7 +28,7 @@ List<RawDataSet> rawDataSets() {
     ),
     RawDataSet(
       title: 'Default',
-      color: gridColor,
+      color: spiderWebColor.withOpacity(0.2),
       values: [
         4,
         4,
@@ -39,7 +39,7 @@ List<RawDataSet> rawDataSets() {
     ),
     RawDataSet(
       title: 'Default',
-      color: gridColor,
+      color: spiderWebColor.withOpacity(0.2),
       values: [
         3,
         3,
@@ -50,7 +50,7 @@ List<RawDataSet> rawDataSets() {
     ),
     RawDataSet(
       title: 'Default',
-      color: gridColor,
+      color: spiderWebColor.withOpacity(0.2),
       values: [
         2,
         2,
@@ -61,7 +61,7 @@ List<RawDataSet> rawDataSets() {
     ),
     RawDataSet(
       title: 'Me',
-      color: kPrimaryColor,
+      color: spiderColor,
       values: [
         1,
         2,

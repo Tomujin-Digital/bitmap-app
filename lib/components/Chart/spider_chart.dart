@@ -45,7 +45,8 @@ class SpiderChart extends StatelessWidget {
           borderData: FlBorderData(show: false),
           radarBorderData: const BorderSide(color: Colors.transparent),
           titlePositionPercentageOffset: 0.2,
-          titleTextStyle: const TextStyle(color: titleColor, fontSize: 14),
+          titleTextStyle:
+              const TextStyle(color: spiderTitleColor, fontSize: 14),
           getTitle: (index, angle) {
             final usedAngle =
                 relativeAngleMode ? angle + angleValue : angleValue;
@@ -79,7 +80,7 @@ class SpiderChart extends StatelessWidget {
           ticksTextStyle:
               const TextStyle(color: Colors.transparent, fontSize: 10),
           tickBorderData: const BorderSide(color: Colors.transparent),
-          gridBorderData: const BorderSide(color: gridColor, width: 2),
+          gridBorderData: const BorderSide(color: spiderGridColor, width: 2),
         ),
         swapAnimationDuration: const Duration(milliseconds: 400),
       ),

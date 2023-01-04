@@ -15,5 +15,7 @@ const kPrimaryBackgroundLinear =
 const kSecondaryBackgroundLinear =
     LinearGradient(colors: kPrimaryGradientColorList);
 
-const gridColor = Colors.grey;
-const titleColor = Color(0xff8c95db);
+const spiderColor = kPrimaryColor;
+const spiderWebColor = Color.fromARGB(80, 35, 181, 230);
+const spiderGridColor = kPrimaryColor;
+const spiderTitleColor = Colors.black;
