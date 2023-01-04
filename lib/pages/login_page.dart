@@ -1,5 +1,5 @@
 import 'user_page.dart';
-import 'package:bitmap/controller/video.dart';
+import '../controller/video.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
@@ -22,7 +22,9 @@ class LoginPage extends GetView<VideoController> {
       focusNode.requestFocus();
       return;
     }
-    Get.to(UserPage());
+    loginGetControler
+        .authenticate()
+        .then((value) => {if (value == true) Get.to(UserPage())});
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:bitmap/components/Cart/test_cart.dart';
 import 'package:bitmap/components/Chart/line_chart.dart';
+import 'package:bitmap/components/Tooltip/custom_tooltip.dart';
 
 import '../components/Cart/content_cart.dart';
 import '../components/Chart/spider_chart.dart';
@@ -146,24 +147,15 @@ class UserPage extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     height: 300,
-                    child: SpiderChart(),
+                    child: CustomTooltip(
+                        message: 'You have a hacker mind',
+                        child: SpiderChart()),
                   ),
                   ContentCard(
                     title: "Teachers Told Me",
                     subtitle: "Latest say: Cheer up!",
                   ),
-                  ContentCard(
-                    title: "My Activity",
-                    subtitle: "You have 3 strike",
-                  ),
-                  ContentCard(
-                    title: "Challenges",
-                    subtitle: "test",
-                  ),
-                  ContentCard(
-                    title: "My Rewards",
-                    subtitle: "test",
-                  ),
+
                   TestCard()
                   // LineChartSample2()
                 ]),

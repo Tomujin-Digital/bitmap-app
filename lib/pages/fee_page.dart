@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../constants.dart';
 
@@ -56,24 +57,29 @@ class FeePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    width: double.infinity,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [kPrimaryColor, kPrimaryColor]),
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20))),
-                    child: Center(
-                        child: Text(
-                      "Төлөх",
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle2!
-                          .copyWith(fontSize: 14.0, color: Colors.white),
-                    )))
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      width: double.infinity,
+                      height: 40,
+                      decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [kPrimaryColor, kPrimaryColor]),
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20))),
+                      child: Center(
+                          child: Text(
+                        "Төлөх",
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle2!
+                            .copyWith(fontSize: 14.0, color: Colors.white),
+                      ))),
+                )
               ]),
             );
           },
