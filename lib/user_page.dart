@@ -1,5 +1,8 @@
+import 'package:bitmap/components/Cart/test_cart.dart';
+import 'package:bitmap/components/Chart/line_chart.dart';
+
 import 'components/Cart/content_cart.dart';
-import 'components/SpiderChart/spider_chart.dart';
+import 'components/Chart/spider_chart.dart';
 import 'constants.dart';
 import 'fee_page.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +18,7 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const expandedHeight = 250.0;
+    const expandedHeight = 150.0;
     const collapsedHeight = 60.0;
     return SafeArea(
       child: Scaffold(
@@ -26,7 +29,7 @@ class UserPage extends StatelessWidget {
               child: SizedBox(
                 width: video?.value.size.width ?? 0,
                 height: video?.value.size.height ?? 0,
-                child: VideoPlayer(video!),
+                // child: VideoPlayer(video!),
               ),
             ),
           ),
@@ -49,55 +52,94 @@ class UserPage extends StatelessWidget {
                 backgroundColor: kPrimaryColor,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
                   ),
                 ),
                 flexibleSpace: FlexibleSpaceBar(
                   collapseMode: CollapseMode.pin,
                   centerTitle: true,
                   title: Column(
-                    children: const [
-                      SizedBox(height: 20),
-                      Text('Chingun Undrakh',
-                          style: TextStyle(fontSize: 16, color: Colors.white)),
+                    children: [
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('Chingun Undrakh',
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.white)),
+                          const SizedBox(width: 5),
+                          Container(
+                            padding: const EdgeInsets.all(1),
+                            decoration: const ShapeDecoration(
+                              color: Colors.white,
+                              shape: CircleBorder(),
+                            ),
+                            child: const BadgeTooltip(
+                              message: "Diamond",
+                              child: CircleAvatar(
+                                backgroundImage: AssetImage(
+                                    'assets/images/icons/diamond.png'),
+                                radius: 10,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   background: Stack(
                     children: [
-                      Positioned(
-                        bottom: collapsedHeight + 30,
-                        left: MediaQuery.of(context).size.width / 2 - 50,
+                      SizedBox.expand(
                         child: Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: const ShapeDecoration(
-                            color: Colors.white,
-                            shape: CircleBorder(),
+                          clipBehavior: Clip.hardEdge,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30),
+                            ),
+                            gradient: kPrimaryBackgroundLinear,
                           ),
-                          child: const CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                'https://avatars.dicebear.com/api/bottts/0x2388891.png'),
-                            radius: 45,
+                          child: FittedBox(
+                            fit: BoxFit.fill,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: video?.value.size.height ?? 0,
+                              child: VideoPlayer(video!),
+                            ),
                           ),
                         ),
                       ),
                       Positioned(
-                        bottom: collapsedHeight + 30,
-                        left: MediaQuery.of(context).size.width / 2 - 50,
-                        child: Container(
-                          padding: const EdgeInsets.all(1),
-                          decoration: const ShapeDecoration(
-                            color: Colors.white,
-                            shape: CircleBorder(),
-                          ),
-                          child: const BadgeTooltip(
-                            message: "Group 1",
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/icons/diamond.png'),
-                              radius: 15,
+                        bottom: 0,
+                        child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            height: 100,
+                            child: const LineChartSample2()),
+                      ),
+                      Positioned(
+                        bottom: 30,
+                        left: MediaQuery.of(context).size.width / 2 - 35,
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: const ShapeDecoration(
+                                color: Colors.white,
+                                shape: CircleBorder(),
+                              ),
+                              child: const CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    'https://avatars.dicebear.com/api/bottts/0x2388891.png'),
+                                radius: 30,
+                              ),
                             ),
-                          ),
+                            const SizedBox(height: 10),
+                            const Text(
+                              '0x2388891',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -128,6 +170,8 @@ class UserPage extends StatelessWidget {
                       title: "My Rewards",
                       subtitle: "test",
                     ),
+                    TestCard()
+                    // LineChartSample2()
                   ]),
                 ),
               )
