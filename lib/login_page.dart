@@ -11,13 +11,17 @@ class LoginPage extends GetView<VideoController> {
   LoginPage({super.key});
   final LoginController loginGetControler = Get.put(LoginController());
   final VideoController videoGetControler = Get.put(VideoController());
+  final FocusNode focusNode = FocusNode();
 
   inputHandler(BuildContext context) {
     return loginGetControler.updateCredential;
   }
 
   void submitHandler() {
-    if (loginGetControler.credential.obs.isEmpty) return;
+    if (loginGetControler.credential.obs.isEmpty) {
+      focusNode.requestFocus();
+      return;
+    }
     Get.to(UserPage());
   }
 
@@ -45,7 +49,15 @@ class LoginPage extends GetView<VideoController> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Image.asset(
+                          "assets/images/logo.png",
+                          height: 50,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         TextField(
+                          focusNode: focusNode,
                           onSubmitted: (_) => submitHandler(),
                           onChanged: inputHandler(context),
                           style: const TextStyle(color: Colors.white),
@@ -53,7 +65,7 @@ class LoginPage extends GetView<VideoController> {
                           decoration: const InputDecoration(
                               hintText: '0x2388891',
                               hintStyle: TextStyle(color: Colors.white),
-                              labelText: 'Click me',
+                              labelText: 'Click me and Decode your code',
                               labelStyle: TextStyle(color: Colors.white),
                               focusedBorder: OutlineInputBorder(
                                 borderSide:
@@ -68,7 +80,7 @@ class LoginPage extends GetView<VideoController> {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: kPrimaryColor,
                               ),
-                              child: const Text('Encode'),
+                              child: const Text('Decode'),
                             ),
                             const SizedBox(
                               width: 20,
