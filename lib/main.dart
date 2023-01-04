@@ -1,5 +1,5 @@
-import 'package:bitmap/constants.dart';
-import 'package:bitmap/login_page.dart';
+import 'constants.dart';
+import 'pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

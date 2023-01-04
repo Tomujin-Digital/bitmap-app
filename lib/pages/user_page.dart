@@ -1,16 +1,16 @@
 import 'package:bitmap/components/Cart/test_cart.dart';
 import 'package:bitmap/components/Chart/line_chart.dart';
 
-import 'components/Cart/content_cart.dart';
-import 'components/Chart/spider_chart.dart';
-import 'constants.dart';
+import '../components/Cart/content_cart.dart';
+import '../components/Chart/spider_chart.dart';
+import '../constants.dart';
 import 'fee_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
-import 'components/Tooltip/badge_tooltip.dart';
-import 'controller/video.dart';
+import '../components/Tooltip/badge_tooltip.dart';
+import '../controller/video.dart';
 
 class UserPage extends StatelessWidget {
   UserPage({super.key});
@@ -55,7 +55,7 @@ class UserPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Chingun Undrakh',
+                        const Text('0x2388891',
                             style:
                                 TextStyle(fontSize: 16, color: Colors.white)),
                         const SizedBox(width: 5),
@@ -84,12 +84,11 @@ class UserPage extends StatelessWidget {
                       child: Container(
                         clipBehavior: Clip.hardEdge,
                         decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30),
-                          ),
-                          gradient: kPrimaryBackgroundLinear,
-                        ),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30),
+                            ),
+                            color: kPrimaryColor),
                         child: FittedBox(
                           fit: BoxFit.fill,
                           child: SizedBox(
@@ -109,25 +108,30 @@ class UserPage extends StatelessWidget {
                     ),
                     Positioned(
                       bottom: 30,
-                      left: MediaQuery.of(context).size.width / 2 - 35,
-                      child: Column(
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: const EdgeInsets.all(5),
-                            decoration: const ShapeDecoration(
-                              color: Colors.white,
-                              shape: CircleBorder(),
-                            ),
-                            child: const CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.dicebear.com/api/bottts/0x2388891.png'),
-                              radius: 30,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          const Text(
-                            '0x2388891',
-                            style: TextStyle(color: Colors.white),
+                          Column(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(5),
+                                decoration: const ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: CircleBorder(),
+                                ),
+                                child: const CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      'https://avatars.dicebear.com/api/bottts/0x2388891.png'),
+                                  radius: 30,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              const Text(
+                                'Chingun Undrakh',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
                           ),
                         ],
                       ),

@@ -1,11 +1,11 @@
-import 'package:bitmap/user_page.dart';
+import 'user_page.dart';
 import 'package:bitmap/controller/video.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
-import 'constants.dart';
-import 'controller/login.dart';
+import '../constants.dart';
+import '../controller/login.dart';
 
 class LoginPage extends GetView<VideoController> {
   LoginPage({super.key});
