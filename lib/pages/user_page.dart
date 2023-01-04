@@ -1,4 +1,3 @@
-import 'package:bitmap/components/Cart/test_cart.dart';
 import 'package:bitmap/components/Chart/line_chart.dart';
 import 'package:bitmap/components/Tooltip/custom_tooltip.dart';
 
@@ -152,12 +151,16 @@ class UserPage extends StatelessWidget {
                         child: SpiderChart()),
                   ),
                   ContentCard(
-                    title: "Teachers Told Me",
-                    subtitle: "Latest say: Cheer up!",
-                  ),
-
-                  TestCard()
-                  // LineChartSample2()
+                      title: "Teachers Told Me",
+                      subtitle: "Zaya say: Хадгалаж болох...",
+                      imageSrc:
+                          'https://quotefancy.com/media/wallpaper/3840x2160/3308249-Ernest-Gallo-Quote-My-first-grade-teacher-told-me-I-was-the.jpg'),
+                  ContentCard(
+                    title: "My Status",
+                    subtitle: "You're almost be a Hacker Mind!",
+                    imageSrc:
+                        'https://i.pinimg.com/originals/8a/c5/5c/8ac55c4329b8a9208de17e2a7cde2774.jpg',
+                  )
                 ]),
               ),
             )

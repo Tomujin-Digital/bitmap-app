@@ -60,6 +60,10 @@ class FeePage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Get.back();
+                    Get.snackbar("Тун удахгүй",
+                        "Уг үйлдэл тун удахгүй манай апп дээр орж ирнэ.",
+                        colorText: Colors.white,
+                        backgroundColor: kPrimaryColor);
                   },
                   child: Container(
                       margin: const EdgeInsets.only(bottom: 10),

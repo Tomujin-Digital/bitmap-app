@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 
 class ContentCard extends GetView {
-  const ContentCard({super.key, required this.title, this.subtitle});
+  const ContentCard(
+      {super.key, required this.title, this.imageSrc, this.subtitle});
   final String title;
   final String? subtitle;
+  final String? imageSrc;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.snackbar(title, subtitle ?? '', colorText: Colors.white);
+      },
       child: SizedBox(
         width: 335,
-        height: 174,
+        height: 150,
         child: Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           shape: RoundedRectangleBorder(
@@ -19,20 +23,49 @@ class ContentCard extends GetView {
           ),
           elevation: 5,
           margin: const EdgeInsets.all(10),
-          child: Column(
+          child: Stack(
             children: [
               SizedBox(
                 width: 350,
-                height: 110,
+                height: 130,
                 child: Image.network(
-                  'https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                  fit: BoxFit.fill,
+                  imageSrc ?? 'https://picsum.photos/350/130',
+                  fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(
-                height: 5,
+              Container(
+                width: 350,
+                height: 130,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0x9A000000),
+                      Color(0x02FFFFFF),
+                    ],
+                  ),
+                ),
               ),
-              Column(children: [Text(title), Text(subtitle ?? '')])
+              Positioned(
+                  left: 10,
+                  bottom: 10,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          subtitle ?? '',
+                          style:
+                              TextStyle(color: Colors.white.withOpacity(0.6)),
+                        )
+                      ]))
             ],
           ),
         ),
