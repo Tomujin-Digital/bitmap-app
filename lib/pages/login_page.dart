@@ -1,3 +1,5 @@
+import 'package:get/get_connect/http/src/utils/utils.dart';
+
 import 'user_page.dart';
 import '../controller/video.dart';
 import 'package:flutter/material.dart';
@@ -59,8 +61,13 @@ class LoginPage extends GetView<VideoController> {
                           height: 20,
                         ),
                         TextField(
+                          enableSuggestions: false,
+                          autocorrect: false,
                           focusNode: focusNode,
-                          onSubmitted: (_) => submitHandler(),
+                          onSubmitted: loginGetControler.supportState ==
+                                  SupportState.supported
+                              ? (_) => submitHandler()
+                              : null,
                           onChanged: inputHandler(context),
                           style: const TextStyle(color: Colors.white),
                           cursorColor: kPrimaryColor,
@@ -74,6 +81,26 @@ class LoginPage extends GetView<VideoController> {
                                     BorderSide(color: Color(0xFF4700a9)),
                               )),
                         ),
+                        loginGetControler.supportState != SupportState.supported
+                            ? TextField(
+                                obscureText: true,
+                                enableSuggestions: false,
+                                autocorrect: false,
+                                onSubmitted: (_) => submitHandler(),
+                                onChanged: loginGetControler.updateSecretKey,
+                                style: const TextStyle(color: Colors.white),
+                                cursorColor: kPrimaryColor,
+                                decoration: const InputDecoration(
+                                    hintText: '******',
+                                    hintStyle: TextStyle(color: Colors.white),
+                                    labelText: 'Secret Key',
+                                    labelStyle: TextStyle(color: Colors.white),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Color(0xFF4700a9)),
+                                    )),
+                              )
+                            : const SizedBox(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
