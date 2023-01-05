@@ -160,7 +160,12 @@ class UserPage extends StatelessWidget {
                     subtitle: "You're almost be a Hacker Mind!",
                     imageSrc:
                         'https://i.pinimg.com/originals/8a/c5/5c/8ac55c4329b8a9208de17e2a7cde2774.jpg',
-                  )
+                  ),
+                  ContentCard(
+                    title: "My Projects",
+                    subtitle: "",
+                    imageSrc: 'https://wallpaperaccess.com/full/1930875.jpg',
+                  ),
                 ]),
               ),
             )
